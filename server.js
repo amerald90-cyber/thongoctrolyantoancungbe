@@ -67,7 +67,7 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => {
   const url = `http://localhost:${PORT}`;
   console.log(`=======================================================`);
-  console.log(`🚀 ENDY - TRỢ LÝ AN TOÀN CHO TRẺ EM ĐANG CHẠY TẠI:`);
+  console.log(`🚀 THỎ NGỌC - CHUYÊN GIA AN TOÀN CHO TRẺ EM ĐANG CHẠY TẠI:`);
   console.log(`👉 ${url}`);
   console.log(`=======================================================`);
   console.log(`Nhấn Ctrl + C để dừng máy chủ.`);

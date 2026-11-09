@@ -1,8 +1,8 @@
 @echo off
 chcp 65001 >nul
-title Endy - Trợ lý an toàn cho trẻ em
+title Thỏ Ngọc - Chuyên gia an toàn cho trẻ em
 echo =======================================================
-echo     ENDY - LÁ CHẮN AN TOÀN CỦA CÁC BẠN NHỎ 🛡️
+echo     THỎ NGỌC - CHUYÊN GIA AN TOÀN CHO TRẺ EM 🐰🛡️
 echo =======================================================
 echo Đang khởi động ứng dụng web...
 

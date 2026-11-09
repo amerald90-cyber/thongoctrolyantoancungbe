@@ -397,7 +397,8 @@ html, body {
 .corner-endy-avatar {
   width: 44px;
   height: 44px;
-  object-fit: contain;
+  border-radius: 50%;
+  object-fit: cover;
   transition: transform 0.2s ease;
 }
 .btn-endy-corner:hover .corner-endy-avatar {
@@ -470,8 +471,9 @@ html, body {
 .endy-logo-img {
   width: 44px;
   height: 44px;
-  border-radius: 12px;
-  object-fit: contain;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #38bdf8;
   background: #e0f2fe;
   padding: 2px;
   box-shadow: 0 2px 8px rgba(2, 132, 199, 0.2);
@@ -860,8 +862,10 @@ html, body {
 .hero-mascot-img {
   width: 70px;
   height: 70px;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(2, 132, 199, 0.2));
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #38bdf8;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
   animation: floatMascot 3s ease-in-out infinite;
 }
 
@@ -916,12 +920,12 @@ html, body {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: cover;
   flex-shrink: 0;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
   border: 2px solid #38bdf8;
   background: #ffffff;
-  padding: 2px;
+  padding: 0;
 }
 
 /* Endy bouncing entrance on greeting */
@@ -1608,7 +1612,7 @@ html, body {
   .cover-top-right-group {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 8px;
   }

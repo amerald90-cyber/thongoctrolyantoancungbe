@@ -1,12 +1,12 @@
-# 🛡️ ENDY - TRỢ LÝ AN TOÀN CHO TRẺ EM
-> **Lá chắn an toàn của các bạn nhỏ**
-> *"Học an toàn hôm nay - Cho ngày mai tươi sáng | Hạnh phúc ngày mai cùng Endy ❤️"*
+# 🐰🛡️ THỎ NGỌC - CHUYÊN GIA AN TOÀN CHO TRẺ EM
+> **Chuyên gia an toàn của các bạn nhỏ**
+> *"Học an toàn hôm nay - Cho ngày mai tươi sáng | Tự tin lớn khôn cùng Chuyên gia Thỏ Ngọc ❤️"*
 
 ---
 
-## 🌟 Giới thiệu Web App Endy
+## 🌟 Giới thiệu Web App Thỏ Ngọc
 
-Ứng dụng Web App **Endy** là trợ lý tương tác thông minh được thiết kế chuyên biệt cho học sinh và trẻ em nhằm trang bị kiến thức, kỹ năng nhận diện nguy hiểm và tự bảo vệ bản thân trong các tình huống thực tế:
+Ứng dụng Web App **Thỏ Ngọc** là trợ lý chuyên gia tương tác thông minh được thiết kế chuyên biệt cho học sinh và trẻ em nhằm trang bị kiến thức, kỹ năng nhận diện nguy hiểm và tự bảo vệ bản thân trong các tình huống thực tế:
 1. **Phòng chống đuối nước 🛟**: Kỹ năng bơi an toàn, nổi ngửa tự cứu, ứng cứu bạn gặp nạn từ trên bờ, không tự ý tắm ao hồ sông suối.
 2. **An toàn giao thông 🚦**: Quy tắc đi qua đường vạch kẻ bộ hành, đội mũ bảo hiểm đạt chuẩn, quan sát đèn tín hiệu.
 3. **Phòng cháy chữa cháy 🧯**: Thoát hiểm trong khói độc, kỹ năng bò thấp bịt khăn ướt, tuyệt đối không dội nước vào đám cháy điện, gọi số cứu hỏa **114**.

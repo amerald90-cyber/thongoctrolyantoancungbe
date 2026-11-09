@@ -988,10 +988,11 @@ kb.forEach(item => {
 
 console.log('Final KB items count:', kb.length);
 
-const output = `// DỮ LIỆU TRI THỨC VÀ BỘ MÁY TÌM KIẾM CỦA CHATBOT ENDY
-// Lá chắn an toàn của các bạn nhỏ - Tổng cộng ${kb.length} tình huống & kiến thức an toàn
+const output = `// DỮ LIỆU TRI THỨC VÀ BỘ MÁY TÌM KIẾM CỦA CHATBOT THỎ NGỌC
+// Chuyên gia an toàn cho trẻ em - Tổng cộng ${kb.length} tình huống & kiến thức an toàn
 
-window.ENDY_KB = ${JSON.stringify(kb, null, 2)};
+window.THO_NGOC_KB = ${JSON.stringify(kb, null, 2)};
+window.ENDY_KB = window.THO_NGOC_KB;
 
 window.CATEGORY_FOLLOWUPS = ${JSON.stringify(CATEGORY_FOLLOWUPS, null, 2)};
 
@@ -1026,8 +1027,8 @@ const CONTEXT_FOLLOWUP_INDICATORS = [
     'bị sao', 'bi sao', 'ai', 'cái gì', 'cai gi', 'dùng gì', 'dung gi'
 ];
 
-// BỘ MÁY TÌM KIẾM THÔNG MINH ENDY HỖ TRỢ NGỮ CẢNH (CONTEXT-AWARE SEARCH)
-window.searchEndyKB = function(userQuery, context = null) {
+// BỘ MÁY TÌM KIẾM THÔNG MINH THỎ NGỌC HỖ TRỢ NGỮ CẢNH (CONTEXT-AWARE SEARCH)
+window.searchThoNgocKB = function(userQuery, context = null) {
     if (!userQuery || typeof userQuery !== 'string') return null;
     let query = userQuery.toLowerCase().trim();
     // Bỏ dấu hỏi chấm, chấm than ở cuối câu
@@ -1038,9 +1039,9 @@ window.searchEndyKB = function(userQuery, context = null) {
     const userWordsNoTone = queryNoTone.split(/\\s+/).filter(w => w.length > 1 && !STOP_WORDS.has(w));
 
     // Chào hỏi
-    if (['chào', 'xin chào', 'hi', 'hello', 'alo', 'bắt đầu', 'chào bạn', 'chào endy'].includes(query) ||
-        ['chao', 'xin chao', 'chao ban', 'chao endy'].includes(queryNoTone)) {
-        const greetItem = window.ENDY_KB.find(x => x.id === 'greeting');
+    if (['chào', 'xin chào', 'hi', 'hello', 'alo', 'bắt đầu', 'chào bạn', 'chào thỏ ngọc', 'thỏ ngọc', 'chào endy'].includes(query) ||
+        ['chao', 'xin chao', 'chao ban', 'chao tho ngoc', 'tho ngoc', 'chao endy'].includes(queryNoTone)) {
+        const greetItem = window.THO_NGOC_KB.find(x => x.id === 'greeting');
         if (greetItem) return { item: greetItem, score: 1000, followups: greetItem.followups || [] };
     }
 
@@ -1059,8 +1060,8 @@ window.searchEndyKB = function(userQuery, context = null) {
     let bestMatch = null;
     let highestScore = 0;
 
-    for (let i = 0; i < window.ENDY_KB.length; i++) {
-        const item = window.ENDY_KB[i];
+    for (let i = 0; i < window.THO_NGOC_KB.length; i++) {
+        const item = window.THO_NGOC_KB[i];
         let score = 0;
 
         for (let j = 0; j < item.keywords.length; j++) {
@@ -1121,6 +1122,7 @@ window.searchEndyKB = function(userQuery, context = null) {
 
     return null;
 };
+window.searchEndyKB = window.searchThoNgocKB;
 `;
 
 fs.writeFileSync('chatbot-data.js', output, 'utf8');

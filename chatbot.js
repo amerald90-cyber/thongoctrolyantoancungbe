@@ -1,9 +1,9 @@
 (function() {
     // Ngăn chặn khởi tạo trùng lặp
-    if (window.__endyChatbotLoaded) return;
-    window.__endyChatbotLoaded = true;
+    if (window.__thoNgocChatbotLoaded) return;
+    window.__thoNgocChatbotLoaded = true;
 
-    const ASSISTANT_NAME = "Endy - Lá chắn an toàn của các bạn nhỏ 🛡️";
+    const ASSISTANT_NAME = "Thỏ Ngọc - Chuyên gia an toàn cho trẻ em 🐰🛡️";
 
     // Âm thanh thông báo "Ting Teng" nhẹ nhàng bằng Web Audio API
     function playTingSound() {
@@ -53,10 +53,10 @@
             'có ai không',
             'trợ lý'
         ],
-        response: "**Chào em! 👋 Mình là Endy - Lá chắn an toàn của các bạn nhỏ 🛡️**\n\n" +
+        response: "**Chào em! 👋 Mình là Thỏ Ngọc - Chuyên gia an toàn cho trẻ em 🐰🛡️**\n\n" +
                   "Mình sẽ đồng hành cùng em tìm hiểu về **phòng, chống tai nạn thương tích và đuối nước**.\n\n" +
                   "Em có thể hỏi mình về an toàn khi bơi, phòng tránh đuối nước, té ngã, bỏng, điện giật, tai nạn giao thông, vật sắc nhọn, động vật cắn và nhiều tình huống nguy hiểm khác trong cuộc sống.\n\n" +
-                  "Em muốn Endy giúp gì nào? 😊"
+                  "Em muốn Chuyên gia Thỏ Ngọc giúp gì nào? 😊"
     },
 
     {
@@ -70,9 +70,9 @@
             'bot là ai',
             'bạn làm gì'
         ],
-        response: "**Mình là Endy 🛡️ - Lá chắn an toàn của các bạn nhỏ.**\n\n" +
-                  "Mình là trợ lý AI giúp các em học sinh tìm hiểu kiến thức và kỹ năng **phòng, chống tai nạn thương tích và đuối nước**.\n\n" +
-                  "Endy sẽ giúp em biết cách **nhận diện nguy hiểm - phòng tránh - xử lý đúng khi có tình huống xảy ra**."
+        response: "**Mình là Thỏ Ngọc 🐰 - Chuyên gia an toàn của các bạn nhỏ.**\n\n" +
+                  "Mình là chuyên gia giúp các em học sinh tìm hiểu kiến thức và kỹ năng **phòng, chống tai nạn thương tích và đuối nước**.\n\n" +
+                  "Thỏ Ngọc sẽ giúp em biết cách **nhận diện nguy hiểm - phòng tránh - xử lý đúng khi có tình huống xảy ra**."
     },
 
     {
@@ -84,10 +84,11 @@
             'tên chatbot',
             'chatbot tên gì',
             'tên của bạn',
-            'endy là ai'
+            'Thỏ ngọc là ai',
+            'thỏ ngọc là ai'
         ],
-        response: "**Mình tên là Endy 🛡️**\n\n" +
-                  "Tên đầy đủ của mình là **Endy - Lá chắn an toàn của các bạn nhỏ**.\n\n" +
+        response: "**Mình tên là Thỏ Ngọc 🐰**\n\n" +
+                  "Tên đầy đủ của mình là **Thỏ Ngọc - Chuyên gia an toàn cho trẻ em**.\n\n" +
                   "Mình sẽ cùng em học cách nhận biết nguy hiểm, phòng tránh tai nạn và bảo vệ bản thân an toàn hơn mỗi ngày. 😊"
     },
 
@@ -101,10 +102,10 @@
             'giup gi',
             'hỏi gì được',
             'có thể hỏi gì',
-            'endy giúp gì',
-            'endy biết gì'
+            'Thỏ ngọc giúp gì',
+            'Thỏ ngọc biết gì'
         ],
-        response: "**Endy có thể giúp em tìm hiểu rất nhiều kiến thức về an toàn. 🛡️**\n\n" +
+        response: "**Thỏ ngọc có thể giúp em tìm hiểu rất nhiều kiến thức về an toàn. 🛡️**\n\n" +
                   "Ví dụ như:\n" +
                   "• Phòng tránh đuối nước và bơi an toàn.\n" +
                   "• Phòng tránh té ngã, bỏng và điện giật.\n" +
@@ -112,7 +113,7 @@
                   "• Phòng tránh tai nạn khi vui chơi, học tập và sinh hoạt.\n" +
                   "• Cách xử lý khi gặp vật sắc nhọn, động vật cắn hoặc tình huống nguy hiểm.\n" +
                   "• Cách gọi người lớn và tìm sự trợ giúp khi xảy ra tai nạn.\n\n" +
-                  "Em cứ hỏi endy bằng cách nói bình thường nhé! 😊"
+                  "Em cứ hỏi Thỏ ngọc bằng cách nói bình thường nhé! 😊"
     },
 
     {
@@ -128,7 +129,7 @@
             'san sang'
         ],
         response: "**Được rồi, chúng mình bắt đầu nhé! 🛡️**\n\n" +
-                  "Em có thể hỏi endy bất cứ điều gì về **phòng chống đuối nước, tai nạn thương tích và kỹ năng an toàn**.\n\n" +
+                  "Em có thể hỏi Thỏ ngọc bất cứ điều gì về **phòng chống đuối nước, tai nạn thương tích và kỹ năng an toàn**.\n\n" +
                   "Ví dụ: **“Đuối nước là gì?”**, **“Bị bỏng phải làm sao?”**, **“Bạn bị ngã thì em nên làm gì?”** hoặc **“Em bị rơi xuống nước phải xử lý thế nào?”**"
     },
 
@@ -141,12 +142,12 @@
             'thanks',
             'thank you',
             'cảm ơn bạn',
-            'cảm ơn endy'
+            'cảm ơn Thỏ ngọc'
         ],
         response: "**Không có gì đâu! 😊**\n\n" +
-                  "Endy rất vui khi được giúp em.\n\n" +
+                  "Thỏ ngọc rất vui khi được giúp em.\n\n" +
                   "Hãy luôn nhớ: **Nhận biết nguy hiểm - Phòng tránh từ sớm - Gọi người lớn khi cần giúp đỡ. 🛡️**\n\n" +
-                  "Em còn muốn hỏi endy điều gì nữa không?"
+                  "Em còn muốn hỏi Thỏ ngọc điều gì nữa không?"
     },
 
     {
@@ -162,7 +163,7 @@
             'thoát'
         ],
         response: "**Tạm biệt em! 👋**\n\n" +
-                  "Endy chúc em luôn vui khỏe và an toàn. 🛡️\n\n" +
+                  "Thỏ ngọc chúc em luôn vui khỏe và an toàn. 🛡️\n\n" +
                   "Nhớ nhé: **Cẩn thận khi vui chơi - Không chủ quan trước nguy hiểm - Gặp sự cố hãy gọi người lớn.**\n\n" +
                   "Hẹn gặp lại em!"
     },
@@ -6226,7 +6227,7 @@
       "sao không nhảy xuống vớt bạn",
       "nhảy xuống cứu bạn thân"
     ],
-    response: "**Endy hiểu em rất thương bạn và muốn làm người hùng, nhưng tuyệt đối KHÔNG NHẢY XUỐNG! 🦸‍♂️🚫**\n\n**Vì sao ư?**\n1. Khi sắp chìm, bạn đang cực kỳ hoảng loạn. Bạn sẽ coi em như một cây cọc và **dìm chặt đầu em xuống nước** để ngoi lên thở.\n2. Sức của bạn lúc đó mạnh gấp 3 lần bình thường, em sẽ bị kéo chìm theo ngay lập tức!\n3. **Cứu thông minh mới là dũng cảm:** Hô thật to gọi người lớn, tìm cành cây dài hoặc ném can nhựa/phao xuống cho bạn bám. Đó mới là cách cứu sống bạn thực sự!"
+    response: "**Thỏ ngọc hiểu em rất thương bạn và muốn làm người hùng, nhưng tuyệt đối KHÔNG NHẢY XUỐNG! 🦸‍♂️🚫**\n\n**Vì sao ư?**\n1. Khi sắp chìm, bạn đang cực kỳ hoảng loạn. Bạn sẽ coi em như một cây cọc và **dìm chặt đầu em xuống nước** để ngoi lên thở.\n2. Sức của bạn lúc đó mạnh gấp 3 lần bình thường, em sẽ bị kéo chìm theo ngay lập tức!\n3. **Cứu thông minh mới là dũng cảm:** Hô thật to gọi người lớn, tìm cành cây dài hoặc ném can nhựa/phao xuống cho bạn bám. Đó mới là cách cứu sống bạn thực sự!"
   },
 
   // 2. TÂM LÝ "BIẾT BƠI CHÓ / BƠI BÌNH THƯỜNG" LÀ VÔ ĐỊCH
@@ -6285,7 +6286,7 @@
       "chó cưng bị chìm",
       "cún con ngã xuống nước"
     ],
-    response: "**Bình tĩnh nghe Endy dặn này: Tuyệt đối KHÔNG nhảy xuống vớt cún/mèo nhé! 🐶🐱❌**\n\n1. Loài chó và mèo có bản năng sinh tồn tự bơi vào bờ giỏi hơn chúng ta tưởng rất nhiều.\n2. Bờ ao dốc trơn, em nhảy xuống sẽ bị trượt chân và ngạt nước trước cả thú cưng đấy!\n3. **Cách làm đúng:** Hô to nhờ người lớn, hoặc tìm một cành cây to/tấm ván gác thoai thoải xuống mép nước để cún tự bám trèo lên bờ."
+    response: "**Bình tĩnh nghe Thỏ ngọc dặn này: Tuyệt đối KHÔNG nhảy xuống vớt cún/mèo nhé! 🐶🐱❌**\n\n1. Loài chó và mèo có bản năng sinh tồn tự bơi vào bờ giỏi hơn chúng ta tưởng rất nhiều.\n2. Bờ ao dốc trơn, em nhảy xuống sẽ bị trượt chân và ngạt nước trước cả thú cưng đấy!\n3. **Cách làm đúng:** Hô to nhờ người lớn, hoặc tìm một cành cây to/tấm ván gác thoai thoải xuống mép nước để cún tự bám trèo lên bờ."
   },
 
   // 6. TẠI SAO LẠI CẤM DỐC NGƯỢC NGƯỜI (XỐC NƯỚC)?
@@ -6367,7 +6368,7 @@
       "uống nước ao cho đỡ chìm",
       "uống hết nước sông"
     ],
-    "response": "**Endy cười xỉu với ý tưởng này luôn! 😂 Nhưng tuyệt đối đừng làm thế nhé!**\n\n• Bụng của em chỉ bé bằng chiếc bình nước nhỏ, làm sao chứa hết cả hồ nước khổng lồ được!\n• Khi cố uống, nước sẽ tràn vào **đường thở (phổi)** làm em bị sặc, ho sặc sụa và ngạt thở ngay lập tức.\n👉 **Nhớ nè:** Khi bị chìm, hãy ngậm chặt miệng lại, ngửa cổ lên trời để mũi đón không khí và thả lỏng người để tự nổi lên nhé!"
+    "response": "**Thỏ ngọc cười xỉu với ý tưởng này luôn! 😂 Nhưng tuyệt đối đừng làm thế nhé!**\n\n• Bụng của em chỉ bé bằng chiếc bình nước nhỏ, làm sao chứa hết cả hồ nước khổng lồ được!\n• Khi cố uống, nước sẽ tràn vào **đường thở (phổi)** làm em bị sặc, ho sặc sụa và ngạt thở ngay lập tức.\n👉 **Nhớ nè:** Khi bị chìm, hãy ngậm chặt miệng lại, ngửa cổ lên trời để mũi đón không khí và thả lỏng người để tự nổi lên nhé!"
   },
   {
     "id": "dip_feet_riverbank_safe",
@@ -7940,7 +7941,7 @@
       "khu vực có cứu hộ ở biển",
       "cờ đỏ vàng có ý nghĩa gì"
     ],
-    "response": "**CỜ SỌC ĐỎ - VÀNG: KHU VỰC AN TOÀN NHẤT CÓ CỨU HỘ TUẦN TRA! 🏖️🛟✅**\n\n• **Ý nghĩa:** Khoảng bờ biển nằm giữa hai lá cờ sọc đỏ-vàng là nơi an toàn đã được các chú nhân viên cứu hộ kiểm tra đáy cát không có hố sụt và luôn có người túc trực canh gác.\n👉 **Lời khuyên của Endy:** Đi biển, cả nhà em hãy chọn đúng bãi cát nằm trong phạm vi hai lá cờ đỏ-vàng này để vui chơi an tâm nhất nhé!"
+    "response": "**CỜ SỌC ĐỎ - VÀNG: KHU VỰC AN TOÀN NHẤT CÓ CỨU HỘ TUẦN TRA! 🏖️🛟✅**\n\n• **Ý nghĩa:** Khoảng bờ biển nằm giữa hai lá cờ sọc đỏ-vàng là nơi an toàn đã được các chú nhân viên cứu hộ kiểm tra đáy cát không có hố sụt và luôn có người túc trực canh gác.\n👉 **Lời khuyên của Thỏ ngọc:** Đi biển, cả nhà em hãy chọn đúng bãi cát nằm trong phạm vi hai lá cờ đỏ-vàng này để vui chơi an tâm nhất nhé!"
   },
   {
     "id": "water_depth_colors_pool",
@@ -8022,7 +8023,7 @@
       "cầm que dò đường nước ngập",
       "thử độ sâu của vũng nước"
     ],
-    "response": "**Mẹo 'Gậy dò đường' của hiệp sĩ Endy khi bắt buộc phải qua chỗ ngập nước:** 🦯🌊⚠️\n\n• **Cách làm:** Tìm một cành cây hoặc khúc gỗ dài, chắc chắn. Trước mỗi bước chân đi tới, hãy dùng gậy chọc mạnh thẳng đứng xuống nước phía trước để thăm dò.\n• **Tác dụng:** Cây gậy sẽ báo cho em biết phía trước là mặt đường cứng bằng phẳng hay là một chiếc **hố ga mất nắp, rãnh cống sâu hút** để em kịp thời dừng bước né tránh!"
+    "response": "**Mẹo 'Gậy dò đường' của hiệp sĩ Thỏ ngọc khi bắt buộc phải qua chỗ ngập nước:** 🦯🌊⚠️\n\n• **Cách làm:** Tìm một cành cây hoặc khúc gỗ dài, chắc chắn. Trước mỗi bước chân đi tới, hãy dùng gậy chọc mạnh thẳng đứng xuống nước phía trước để thăm dò.\n• **Tác dụng:** Cây gậy sẽ báo cho em biết phía trước là mặt đường cứng bằng phẳng hay là một chiếc **hố ga mất nắp, rãnh cống sâu hút** để em kịp thời dừng bước né tránh!"
   },
 
   // ==========================================================================
@@ -8200,7 +8201,7 @@
       "bạn bè tẩy chay xúc phạm trên tin nhắn",
       "bị dọa đánh trên mạng xã hội"
     ],
-    "response": "**Bắt nạt trên mạng (Cyberbullying): Đừng chịu đựng một mình, hãy làm 3 bước! 💻🛑🛡️**\n\n• **Tác hại:** Đọc những lời lăng mạ bôi nhọ độc hại sẽ làm em hoảng sợ, stress, mất ngủ và trầm cảm kéo dài.\n• **3 Bước hiệp sĩ Endy hướng dẫn:**\n  1. **Không đôi co cãi nhau:** Càng đáp trả kẻ bắt nạt càng hả hê trêu chọc.\n  2. **Chụp ảnh màn hình làm bằng chứng:** Lưu lại tất cả tin nhắn và bài đăng xúc phạm.\n  3. **Chặn nick (Block) và báo cáo:** Chia sẻ ngay bằng chứng với bố mẹ, thầy cô chủ nhiệm để nhà trường can thiệp xử lý kỷ luật bạn kia!"
+    "response": "**Bắt nạt trên mạng (Cyberbullying): Đừng chịu đựng một mình, hãy làm 3 bước! 💻🛑🛡️**\n\n• **Tác hại:** Đọc những lời lăng mạ bôi nhọ độc hại sẽ làm em hoảng sợ, stress, mất ngủ và trầm cảm kéo dài.\n• **3 Bước hiệp sĩ Thỏ ngọc hướng dẫn:**\n  1. **Không đôi co cãi nhau:** Càng đáp trả kẻ bắt nạt càng hả hê trêu chọc.\n  2. **Chụp ảnh màn hình làm bằng chứng:** Lưu lại tất cả tin nhắn và bài đăng xúc phạm.\n  3. **Chặn nick (Block) và báo cáo:** Chia sẻ ngay bằng chứng với bố mẹ, thầy cô chủ nhiệm để nhà trường can thiệp xử lý kỷ luật bạn kia!"
   },
   {
     "id": "share_house_address_online",
@@ -8326,7 +8327,7 @@
       "quy tắc chơi an toàn cho học sinh",
       "vui chơi an toàn nhớ gì"
     ],
-    "response": "**Bí kíp 3 chữ VÀNG của Hiệp sĩ Endy để 'Chơi cực vui mà vẫn siêu an toàn': 🛡️✨🎮**\n\n1. **QUAN SÁT TRƯỚC (Nhìn quanh 5 giây):** Trước khi chơi, hãy ngó xem có hố sâu, dây điện hở, mảnh kính vỡ hay xe cộ đang lao tới không.\n2. **CHỌN CHỖ ĐÚNG:** Chơi thể thao vào sân bóng; bơi lội vào bể bơi có cứu hộ; chạy nhảy ở sân bằng phẳng, tránh xa mép sông, mép ao, ban công!\n3. **BIẾT ĐIỂM DỪNG:** Đang chơi mà thấy mệt, trời chuyển dông sét, hoặc bạn bè rủ chơi trò mạo hiểm thì kiên quyết **NÓI KHÔNG** và rủ bạn chơi trò khác an toàn hơn nhé!"
+    "response": "**Bí kíp 3 chữ VÀNG của Hiệp sĩ Thỏ ngọc để 'Chơi cực vui mà vẫn siêu an toàn': 🛡️✨🎮**\n\n1. **QUAN SÁT TRƯỚC (Nhìn quanh 5 giây):** Trước khi chơi, hãy ngó xem có hố sâu, dây điện hở, mảnh kính vỡ hay xe cộ đang lao tới không.\n2. **CHỌN CHỖ ĐÚNG:** Chơi thể thao vào sân bóng; bơi lội vào bể bơi có cứu hộ; chạy nhảy ở sân bằng phẳng, tránh xa mép sông, mép ao, ban công!\n3. **BIẾT ĐIỂM DỪNG:** Đang chơi mà thấy mệt, trời chuyển dông sét, hoặc bạn bè rủ chơi trò mạo hiểm thì kiên quyết **NÓI KHÔNG** và rủ bạn chơi trò khác an toàn hơn nhé!"
   },
   {
     "id": "boiling_water_spilled_on_clothes",
@@ -8576,7 +8577,7 @@
       "quy tắc 20 20 20 bảo vệ mắt",
       "làm sao cho mắt sáng khi dùng máy tính"
     ],
-    "response": "**Bí kíp '20 - 20 - 20' của hiệp sĩ Endy để đôi mắt luôn sáng long lanh khi dùng điện thoại, máy tính: 📱👀✨**\n\n• Cứ sau **20 phút** nhìn màn hình học tập hoặc giải trí:\n• Hãy rời mắt nhìn xa ra khoảng cách **20 feet (khoảng 6 mét)**.\n• Giữ tầm nhìn thư giãn trong vòng **20 giây** và chớp mắt nhẹ nhàng vài cái.\n👉 Ngồi học thẳng lưng, giữ màn hình cách mắt tối thiểu 50 cm và tuyệt đối cấm trùm chăn tắt đèn xem điện thoại ban đêm em nhé!"
+    "response": "**Bí kíp '20 - 20 - 20' của hiệp sĩ Thỏ ngọc để đôi mắt luôn sáng long lanh khi dùng điện thoại, máy tính: 📱👀✨**\n\n• Cứ sau **20 phút** nhìn màn hình học tập hoặc giải trí:\n• Hãy rời mắt nhìn xa ra khoảng cách **20 feet (khoảng 6 mét)**.\n• Giữ tầm nhìn thư giãn trong vòng **20 giây** và chớp mắt nhẹ nhàng vài cái.\n👉 Ngồi học thẳng lưng, giữ màn hình cách mắt tối thiểu 50 cm và tuyệt đối cấm trùm chăn tắt đèn xem điện thoại ban đêm em nhé!"
   },
   {
     "id": "bullied_extorted_money_at_school",
@@ -9275,7 +9276,7 @@ const keywordAliases = {
         }
 
         // 4. Nếu hỏi quá ngắn hoặc không tìm thấy (Fallback)
-        return "Xin lỗi em, Endy chưa hiểu rõ câu hỏi này lắm do hơi vắn tắt. Em có thể hỏi mình về **bơi lội an toàn**, **cứu bạn đuối nước**, **cháy nổ và thoát hiểm**, **an toàn giao thông**, **tai nạn thương tích** hoặc các số khẩn cấp (111, 114, 115) nhé! 😊";
+        return "Xin lỗi em, Thỏ Ngọc chưa hiểu rõ câu hỏi này lắm do hơi vắn tắt. Em có thể hỏi chuyên gia về **bơi lội an toàn**, **cứu bạn đuối nước**, **cháy nổ và thoát hiểm**, **an toàn giao thông**, **tai nạn thương tích** hoặc các số khẩn cấp (111, 114, 115) nhé! 😊";
     }
 
     // GIAO DIỆN CHATBOT XANH LÁ MÁT MẮT (#059669) VỚI HIỆU ỨNG PHẬP PHỒNG (PULSE)
@@ -9431,7 +9432,7 @@ const keywordAliases = {
             <span id="ai-close" style="cursor:pointer; font-size:24px; opacity:0.9">&times;</span>
         </div>
         <div class="ai-body" id="ai-body">
-            <div class="ai-msg bot">Chào em! 👋 Mình là <b>Endy - Lá chắn an toàn của các bạn nhỏ 🛡️</b>.<br><br>Mình sẽ đồng hành cùng em tìm hiểu về <b>phòng chống đuối nước, an toàn giao thông, phòng cháy chữa cháy và xử lý tai nạn thương tích</b>. Em muốn hỏi Endy điều gì nào? 😊</div>
+            <div class="ai-msg bot">Chào em! 👋 Mình là <b>Thỏ Ngọc - Chuyên gia an toàn cho trẻ em 🐰🛡️</b>.<br><br>Mình sẽ đồng hành cùng em tìm hiểu về <b>phòng chống đuối nước, an toàn giao thông, phòng cháy chữa cháy và xử lý tai nạn thương tích</b>. Em muốn hỏi Chuyên gia Thỏ Ngọc điều gì nào? 😊</div>
         </div>
         <div class="ai-footer">
             <input type="text" class="ai-input" id="ai-input" placeholder="Gõ câu hỏi của bạn..." />

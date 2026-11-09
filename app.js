@@ -1,5 +1,5 @@
 /**
- * ENDY - TRỢ LÝ AN TOÀN CHO TRẺ EM
+ * THỎ NGỌC - CHUYÊN GIA AN TOÀN CHO TRẺ EM
  * Main Interactive Application Script
  */
 
@@ -8,21 +8,17 @@
 // =============================================================================
 const STATE = {
   activeScreen: 'cover-screen', // 'cover-screen' | 'app-screen'
-  musicPlaying: false,
-  userExplicitlyMuted: false,
-  musicVolume: 0.7,
   activeCategory: 'all',
-  userName: localStorage.getItem('endy_child_name') || 'Bạn nhỏ',
-  userAvatar: localStorage.getItem('endy_child_avatar') || 'assets/avatar_boy.svg',
+  userName: localStorage.getItem('thongoc_child_name') || localStorage.getItem('endy_child_name') || 'Bạn nhỏ',
+  userAvatar: localStorage.getItem('thongoc_child_avatar') || localStorage.getItem('endy_child_avatar') || 'assets/avatar_boy.svg',
   hasGreeted: false,
   isSpeaking: false,
   isListening: false
 };
 
 // =============================================================================
-// 2. AUDIO & TING SOUND EFFECT (WEB AUDIO API)
+// 2. TING SOUND EFFECT (WEB AUDIO API)
 // =============================================================================
-const bgMusic = document.getElementById('bg-music');
 let audioCtx = null;
 
 function getAudioContext() {
@@ -36,7 +32,7 @@ function getAudioContext() {
   return audioCtx;
 }
 
-// "Ting Teng" chime effect when Endy replies
+// "Ting Teng" chime effect when Tho Ngoc replies
 function playTingSound() {
   try {
     const ctx = getAudioContext();
@@ -69,79 +65,8 @@ function playTingSound() {
   }
 }
 
-// Background Music Control
-function toggleMusic(forcePlay) {
-  if (!bgMusic) return;
-
-  const shouldPlay = (typeof forcePlay === 'boolean') ? forcePlay : !STATE.musicPlaying;
-
-  if (shouldPlay) {
-    STATE.userExplicitlyMuted = false;
-    bgMusic.volume = STATE.musicVolume;
-    const playPromise = bgMusic.play();
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        STATE.musicPlaying = true;
-        updateMusicUI();
-      }).catch(err => {
-        // Browser requires user gesture first
-        STATE.musicPlaying = false;
-        updateMusicUI();
-      });
-    }
-  } else {
-    bgMusic.pause();
-    STATE.musicPlaying = false;
-    STATE.userExplicitlyMuted = true;
-    updateMusicUI();
-  }
-}
-
-function updateMusicUI() {
-  const coverEq = document.getElementById('cover-eq');
-  const coverIcon = document.getElementById('cover-music-icon');
-  const coverText = document.getElementById('cover-music-title');
-  const appMusicToggle = document.getElementById('app-music-toggle');
-  const appMusicIcon = document.getElementById('app-music-icon');
-  const appMusicText = document.getElementById('app-music-text');
-
-  if (STATE.musicPlaying) {
-    if (coverEq) coverEq.classList.add('playing');
-    if (coverIcon) coverIcon.textContent = '⏸';
-    if (coverText) coverText.textContent = '🎵 Endy Cùng Em Đến Trường';
-    if (appMusicToggle) appMusicToggle.classList.add('active');
-    if (appMusicIcon) appMusicIcon.textContent = '🎶';
-    if (appMusicText) appMusicText.textContent = 'Endy Cùng Em Đến Trường';
-  } else {
-    if (coverEq) coverEq.classList.remove('playing');
-    if (coverIcon) coverIcon.textContent = '▶';
-    if (coverText) coverText.textContent = '🎵 Bài hát: Tạm dừng';
-    if (appMusicToggle) appMusicToggle.classList.remove('active');
-    if (appMusicIcon) appMusicIcon.textContent = '🎵';
-    if (appMusicText) appMusicText.textContent = 'Phát bài hát';
-  }
-}
-
-// Global interaction listeners to guarantee audio plays automatically
-function enableAutoplayOnFirstInteraction() {
-  function tryStartMusic() {
-    if (!STATE.musicPlaying && !STATE.userExplicitlyMuted) {
-      toggleMusic(true);
-    }
-  }
-
-  // Attempt immediate play
-  toggleMusic(true);
-
-  // Bind to any micro-interaction
-  ['click', 'pointerdown', 'pointermove', 'mousemove', 'touchstart', 'keydown', 'scroll', 'focus'].forEach(evt => {
-    window.addEventListener(evt, tryStartMusic, { capture: true });
-    document.addEventListener(evt, tryStartMusic, { capture: true });
-  });
-}
-
 // =============================================================================
-// 3. NAVIGATION (SWITCHING SCREENS) & ENDY BOUNCE GREETING
+// 3. NAVIGATION (SWITCHING SCREENS) & THỎ NGỌC BOUNCE GREETING
 // =============================================================================
 function showScreen(screenId) {
   const coverScreen = document.getElementById('cover-screen');
@@ -158,14 +83,9 @@ function showScreen(screenId) {
     }
     STATE.activeScreen = 'app-screen';
 
-    // Ensure music is playing if not explicitly muted by user
-    if (!STATE.musicPlaying && !STATE.userExplicitlyMuted) {
-      toggleMusic(true);
-    }
-
-    // Trigger Endy bouncing entrance greeting if first time entering!
+    // Trigger Tho Ngoc bouncing entrance greeting if first time entering!
     if (!STATE.hasGreeted) {
-      triggerEndyGreeting();
+      triggerThoNgocGreeting();
       STATE.hasGreeted = true;
     }
 
@@ -194,8 +114,8 @@ function goToChatCategory(category) {
 }
 window.goToChatCategory = goToChatCategory;
 
-// Endy bounces out and greets first!
-function triggerEndyGreeting() {
+// Tho Ngoc bounces out and greets first!
+function triggerThoNgocGreeting() {
   const chatMascot = document.getElementById('chat-hero-mascot');
   if (chatMascot) {
     chatMascot.style.animation = 'none';
@@ -214,19 +134,27 @@ function triggerEndyGreeting() {
     if (typing) typing.classList.remove('active');
 
     const greetingText =
-      `**Chào ${STATE.userName}! 👋 Mình là Endy - Lá chắn an toàn của các bạn nhỏ 🛡️**\n\n` +
-      `Tớ rất vui được gặp em! Tớ sẽ giúp em học các kỹ năng cần thiết để bảo vệ bản thân và bạn bè:\n` +
-      `• 🛟 **Phòng chống đuối nước & cứu bạn an toàn**\n` +
-      `• 🚦 **An toàn giao thông & đi qua đường đúng cách**\n` +
+      `**Chào ${STATE.userName}! 👋 Mình là Thỏ Ngọc - Chuyên gia an toàn cho trẻ em 🐰🛡️**\n\n` +
+      `Mình rất vui được đồng hành cùng em rèn luyện kiến thức và kỹ năng **phòng, chống tai nạn thương tích và đuối nước**:\n` +
+      `• 🏊 **Phòng chống đuối nước & bơi an toàn**\n` +
+      `• 🚦 **An toàn giao thông & đi qua đường an toàn**\n` +
       `• 🧯 **Phòng cháy chữa cháy & kỹ năng thoát hiểm**\n` +
-      `• 🩹 **Xử lý tai nạn thương tích (hóc nghẹn, bỏng, chó lạ...)**\n` +
-      `• ⚡ **An toàn điện trong gia đình và trường học**\n\n` +
-      `Em hãy bấm vào các **câu hỏi gợi ý** bên dưới hoặc gõ câu hỏi vào ô chat để trò chuyện cùng Endy nhé! 😊`;
+      `• 🩹 **Xử lý tai nạn thương tích (hóc nghẹn, bỏng, chó cắn...)**\n` +
+      `• ⚡ **An toàn điện trong gia đình và trường học**\n` +
+      `• 🛡️ **Quy tắc 5 ngón tay phòng chống xâm hại & bạo lực học đường**\n\n` +
+      `Em hãy bấm vào các **câu hỏi gợi ý** bên dưới hoặc gõ câu hỏi vào ô chat để trò chuyện cùng Chuyên gia Thỏ Ngọc nhé! 😊`;
 
-    appendBotMessage(greetingText, '', true);
+    appendBotMessage(greetingText, '', true, [
+      '🐰 Thỏ Ngọc là ai và giúp được gì cho em?',
+      '🛟 Nếu thấy bạn rơi xuống nước thì làm gì?',
+      '🚒 Cháy điện có được dội nước không?',
+      '📞 Bốn số điện thoại cứu hộ khẩn cấp'
+    ]);
     playTingSound();
   }, 500);
 }
+window.triggerEndyGreeting = triggerThoNgocGreeting;
+window.triggerThoNgocGreeting = triggerThoNgocGreeting;
 
 // =============================================================================
 // 4. CATEGORIES & SUGGESTED QUESTIONS
@@ -284,7 +212,7 @@ const CATEGORY_SUGGESTIONS = {
   quick: [
     '📞 Bốn số điện thoại cứu hộ khẩn cấp',
     '❓ Đố em câu hỏi đúng sai về an toàn',
-    '🛡️ Endy là ai và giúp được gì cho em?',
+    '🐰 Thỏ Ngọc là ai và giúp được gì cho em?',
     '🚨 Gọi 114 nói những thông tin gì?'
   ]
 };
@@ -345,14 +273,14 @@ function sendCategoryWelcome(categoryKey) {
       badge = 'assets/illust_electric.png';
       break;
     case 'injury':
-      tipText = '**Chủ đề: Phòng tránh tai nạn thương tích 🩹**\nEndy sẽ hướng dẫn em cách xử lý khi bị hóc dị vật, bỏng nước sôi, gặp chó lạ và gọi số bảo vệ trẻ em **111**!';
+      tipText = '**Chủ đề: Phòng tránh tai nạn thương tích 🩹**\nChuyên gia Thỏ Ngọc sẽ hướng dẫn em cách xử lý khi bị hóc dị vật, bỏng nước sôi, gặp chó lạ và gọi số bảo vệ trẻ em **111**!';
       break;
     case 'electric':
       tipText = '**Chủ đề: An toàn điện ⚡**\nTuyệt đối không chọc que sắt vào ổ cắm, không chạm vào công tắc khi tay ướt và tránh xa các trạm biến áp, dây điện đứt!';
       badge = 'assets/illust_electric.png';
       break;
     case 'quick':
-      tipText = '**Chủ đề: Câu hỏi nhanh & Đố vui an toàn 💬**\nEm có thể hỏi Endy bất kỳ câu hỏi nào hoặc bấm nút **Đố vui** trên thanh công cụ để thử tài hiểu biết nhé!';
+      tipText = '**Chủ đề: Câu hỏi nhanh & Đố vui an toàn 💬**\nEm có thể hỏi Chuyên gia Thỏ Ngọc bất kỳ câu hỏi nào hoặc bấm nút **Đố vui** trên thanh công cụ để thử tài hiểu biết nhé!';
       break;
   }
 
@@ -425,7 +353,7 @@ function appendBotMessage(text, badgeImgUrl, isGreeting = false, followups = [])
     followupsHtml = `
       <div class="bot-smart-followups">
         <div class="smart-followup-title">
-          <span>Hỏi tiếp thông minh cùng Endy:</span>
+          <span>Hỏi tiếp cùng Chuyên gia Thỏ Ngọc:</span>
         </div>
         <div class="smart-followup-chips">
           ${chips}
@@ -437,12 +365,12 @@ function appendBotMessage(text, badgeImgUrl, isGreeting = false, followups = [])
   const row = document.createElement('div');
   row.className = `msg-row bot ${isGreeting ? 'endy-greeting' : ''}`;
   row.innerHTML = `
-    <img src="assets/avatar_endy.png" alt="Endy" class="msg-avatar">
+    <img src="assets/avatar_tho_ngoc.jpg" alt="Thỏ Ngọc" class="msg-avatar">
     <div class="msg-content-wrapper">
       <div class="msg-bubble">
         <div class="bot-header-name">
-          <span>Endy</span>
-          <span class="bot-badge-shield">🛡️</span>
+          <span>Chuyên gia Thỏ Ngọc</span>
+          <span class="bot-badge-shield">🐰🛡️</span>
         </div>
         <div class="bot-body-layout">
           <div class="bot-text-area">
@@ -488,7 +416,7 @@ function handleSendMessage() {
   if (typing) typing.classList.add('active');
   scrollChatToBottom();
 
-  // 3. Search Endy Knowledge Base với ngữ cảnh thông minh
+  // 3. Search Tho Ngoc Knowledge Base với ngữ cảnh thông minh
   setTimeout(() => {
     if (typing) typing.classList.remove('active');
 
@@ -496,8 +424,9 @@ function handleSendMessage() {
     let badge = '';
     let followups = [];
 
-    if (window.searchEndyKB) {
-      const match = window.searchEndyKB(rawText, CONVERSATION_STATE);
+    const searchFn = window.searchThoNgocKB || window.searchEndyKB;
+    if (searchFn) {
+      const match = searchFn(rawText, CONVERSATION_STATE);
       if (match && match.item) {
         botResponse = match.item.response;
         badge = match.item.badge || '';
@@ -510,7 +439,7 @@ function handleSendMessage() {
     }
 
     if (!botResponse) {
-      botResponse = `Xin lỗi **${STATE.userName}**, câu hỏi của em hơi vắn tắt nên Endy chưa tìm được câu trả lời chính xác nhất! 😊\n\nEm có thể hỏi mình về:\n• **Bơi lội an toàn & cứu đuối** (như: *thấy bạn đuối nước làm gì?*)\n• **An toàn giao thông** (như: *đi qua đường an toàn*, *mũ bảo hiểm*)\n• **Phòng cháy chữa cháy** (như: *cháy điện có dội nước không?*, *số 114*)\n• **Tai nạn thương tích** (như: *bị hóc nghẹn*, *bị bỏng*, *gặp chó lạ*)\n\nHoặc em hãy bấm vào các gợi ý có sẵn bên dưới nhé! ❤️`;
+      botResponse = `Xin lỗi **${STATE.userName}**, câu hỏi của em hơi vắn tắt nên Thỏ Ngọc chưa tìm được câu trả lời chính xác nhất! 😊\n\nEm có thể hỏi chuyên gia về:\n• **Bơi lội an toàn & cứu đuối** (như: *thấy bạn đuối nước làm gì?*)\n• **An toàn giao thông** (như: *đi qua đường an toàn*, *mũ bảo hiểm*)\n• **Phòng cháy chữa cháy** (như: *cháy điện có dội nước không?*, *số 114*)\n• **Tai nạn thương tích** (như: *bị hóc nghẹn*, *bị bỏng*, *gặp chó lạ*)\n\nHoặc em hãy bấm vào các gợi ý có sẵn bên dưới nhé! ❤️`;
     }
 
     appendBotMessage(botResponse, badge, false, followups);
@@ -526,7 +455,7 @@ function sendSuggestion(text) {
   }
 }
 
-function askEndyHotline(number) {
+function askHotline(number) {
   showScreen('app-screen');
   const input = document.getElementById('chat-input');
   if (input) {
@@ -534,6 +463,8 @@ function askEndyHotline(number) {
     handleSendMessage();
   }
 }
+window.askHotline = askHotline;
+window.askEndyHotline = askHotline;
 
 function clearChat() {
   if (confirm('Em có chắc muốn xóa lịch sử trò chuyện để bắt đầu cuộc trò chuyện mới không?')) {
@@ -548,7 +479,7 @@ function clearChat() {
     CONVERSATION_STATE.lastQuery = null;
 
     appendBotMessage(
-      `Chào **${STATE.userName}**! Mình là **Endy - Lá chắn an toàn của các bạn nhỏ 🛡️**.\nEm muốn học hoặc hỏi về tình huống an toàn nào hôm nay? 😊`
+      `Chào **${STATE.userName}**! Mình là **Thỏ Ngọc - Chuyên gia an toàn cho trẻ em 🐰🛡️**.\nEm muốn học hoặc hỏi về tình huống an toàn nào hôm nay? 😊`
     );
     playTingSound();
   }
@@ -811,7 +742,7 @@ function showQuizResult() {
     badgeBg = '#dcfce7';
     badgeBorder = '#22c55e';
   } else if (quizScore < 5) {
-    titleBadge = '💪 Cố lên em nhé! Cùng Endy luyện tập thêm nào!';
+    titleBadge = '💪 Cố lên em nhé! Cùng Thỏ Ngọc luyện tập thêm nào!';
     badgeColor = '#0369a1';
     badgeBg = '#f1f5f9';
     badgeBorder = '#cbd5e1';
@@ -862,11 +793,13 @@ function saveProfile() {
 
   if (nameInput && nameInput.value.trim()) {
     STATE.userName = nameInput.value.trim();
+    localStorage.setItem('thongoc_child_name', STATE.userName);
     localStorage.setItem('endy_child_name', STATE.userName);
   }
 
   if (selectedAvatar && selectedAvatar.dataset.avatar) {
     STATE.userAvatar = selectedAvatar.dataset.avatar;
+    localStorage.setItem('thongoc_child_avatar', STATE.userAvatar);
     localStorage.setItem('endy_child_avatar', STATE.userAvatar);
   }
 
@@ -911,15 +844,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const avatarDisplay = document.getElementById('user-avatar-display');
   if (avatarDisplay) avatarDisplay.src = STATE.userAvatar;
 
-  // Music volume slider
-  const volumeSlider = document.getElementById('cover-volume');
-  if (volumeSlider) {
-    volumeSlider.addEventListener('input', (e) => {
-      STATE.musicVolume = parseFloat(e.target.value);
-      if (bgMusic) bgMusic.volume = STATE.musicVolume;
-    });
-  }
-
   // Cover enter button
   const btnEnterChat = document.getElementById('btn-enter-chat');
   if (btnEnterChat) {
@@ -959,21 +883,6 @@ document.addEventListener('DOMContentLoaded', () => {
     logoBackCover.addEventListener('click', () => {
       showScreen('cover-screen');
     });
-  }
-
-  // Cover music toggle
-  const coverMusicToggle = document.getElementById('cover-music-toggle');
-  if (coverMusicToggle) {
-    coverMusicToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleMusic();
-    });
-  }
-
-  // App music toggle
-  const appMusicToggle = document.getElementById('app-music-toggle');
-  if (appMusicToggle) {
-    appMusicToggle.addEventListener('click', () => toggleMusic());
   }
 
   // Send message events
@@ -1021,10 +930,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Init Voice Input
   initVoiceInput();
-
-  // Try auto-playing music immediately & fallback on first click
-  toggleMusic(true);
-  enableAutoplayOnFirstInteraction();
 
   // Play subtle entrance chime after brief delay
   setTimeout(() => {
@@ -1080,7 +985,7 @@ initSecurityProtection();
 // 13. SAO CHÉP ĐƯỜNG LINK WEB APP
 // =============================================================================
 function copyWebUrl(btn) {
-  const url = 'https://endytrolyantoan.vercel.app';
+  const url = window.location.origin && window.location.origin.startsWith('http') ? window.location.origin : 'https://thongoc-chuyengiaan-toan.vercel.app';
   if (navigator.clipboard) {
     navigator.clipboard.writeText(url).then(() => {
       const orig = btn.textContent;

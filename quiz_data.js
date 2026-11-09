@@ -2394,7 +2394,7 @@ const QUIZ_BANK = [
     "category": "Không gian mạng"
   },
   {
-    "q": "Người bạn đồng hành thông minh 'Endy - Lá chắn an toàn của các bạn nhỏ' sẽ luôn giúp em điều gì?",
+    "q": "Người bạn đồng hành thông minh 'Thỏ Ngọc - Chuyên gia an toàn cho trẻ em' sẽ luôn giúp em điều gì?",
     "options": [
       "Giúp em làm bài tập về nhà môn vẽ",
       "Cung cấp kiến thức, kỹ năng an toàn và bảo vệ bản thân để em tự tin lớn khôn mỗi ngày",
@@ -2402,7 +2402,7 @@ const QUIZ_BANK = [
       "Chơi game cùng em"
     ],
     "correct": 1,
-    "explain": "Chính xác! Endy luôn ở đây để đồng hành, chia sẻ và bảo vệ các bạn học sinh thân yêu! ❤️",
+    "explain": "Chính xác! Thỏ Ngọc luôn ở đây để đồng hành, chia sẻ và bảo vệ các bạn học sinh thân yêu! ❤️",
     "category": "Trường học"
   }
 ];

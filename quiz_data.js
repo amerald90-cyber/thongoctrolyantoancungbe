@@ -1,7 +1,7 @@
 /**
  * ENDY - KHO DỮ LIỆU ĐỐ VUI AN TOÀN CHO TRẺ EM (200 CÂU HỎI TOÀN DIỆN)
  * Bản quyền thuộc về Hành trình số Việt Nam My Love
- * Phát triển bởi Cô giáo Đinh Thị Ngọc - Giáo viên Trường TH Thanh Bình
+ * Phát triển bởi Thầy Nguyễn Huy Tuấn - Giáo viên Trường Tiểu học Đạo Trù
  */
 
 const QUIZ_BANK = [

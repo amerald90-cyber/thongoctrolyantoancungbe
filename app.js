@@ -814,11 +814,48 @@ function saveProfile() {
 }
 
 // =============================================================================
-// 10. MODAL HELPERS
+// 10. MODAL HELPERS & DYNAMIC QR CODE
 // =============================================================================
+function getAppUrl() {
+  if (typeof window !== 'undefined' && window.location && window.location.origin) {
+    const origin = window.location.origin;
+    if (origin.startsWith('http') && !origin.includes('localhost') && !origin.includes('127.0.0.1')) {
+      return origin;
+    }
+  }
+  return 'https://thongoctrolyantoancungbe.vercel.app';
+}
+
+function updateQRModal() {
+  const currentUrl = getAppUrl();
+
+  const displayUrlEl = document.getElementById('display-qr-url');
+  if (displayUrlEl) {
+    displayUrlEl.textContent = currentUrl;
+  }
+
+  const qrImg = document.getElementById('qr-code-image');
+  if (qrImg) {
+    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&margin=15&data=${encodeURIComponent(currentUrl)}`;
+    qrImg.onerror = () => {
+      qrImg.src = 'assets/qrcode_thongoc.png';
+    };
+  }
+
+  const downloadLink = document.getElementById('btn-download-qr');
+  if (downloadLink) {
+    downloadLink.href = 'assets/qrcode_thongoc.png';
+  }
+}
+
 function openModal(id) {
   const modal = document.getElementById(id);
-  if (modal) modal.classList.add('active');
+  if (modal) {
+    if (id === 'qr-modal') {
+      updateQRModal();
+    }
+    modal.classList.add('active');
+  }
 }
 
 function closeModal(id) {
@@ -985,7 +1022,7 @@ initSecurityProtection();
 // 13. SAO CHÉP ĐƯỜNG LINK WEB APP
 // =============================================================================
 function copyWebUrl(btn) {
-  const url = window.location.origin && window.location.origin.startsWith('http') ? window.location.origin : 'https://thongoc-chuyengiaan-toan.vercel.app';
+  const url = getAppUrl();
   if (navigator.clipboard) {
     navigator.clipboard.writeText(url).then(() => {
       const orig = btn.textContent;
